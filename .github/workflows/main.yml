@@ -9,8 +9,13 @@ jobs:
   report-sha:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: get last non-merge commit SHA
+        run: echo "LAST_NON_MERGE_COMMIT_SHA=$(git log --no-merges -n 1 --format='%H')" >> $GITHUB_ENV
+
       - name: report sha
-        env: 
-          GIT_SHA: ${{ github.sha }}
-        run: echo $GIT_SHA
+        run: echo $LAST_NON_MERGE_COMMIT_SHA
 
