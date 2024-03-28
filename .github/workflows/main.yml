@@ -1,0 +1,16 @@
+ame: Once merged
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  report-sha:
+    runs-on: ubuntu-latest
+    steps:
+      - name: report sha
+        env: 
+          GIT_SHA: ${{ github.sha }}
+        run: echo $GIT_SHA
+

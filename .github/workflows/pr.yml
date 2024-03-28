@@ -1,0 +1,15 @@
+name: PR
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  report-sha:
+    runs-on: ubuntu-latest
+    steps:
+      - name: report sha
+        env: 
+          GIT_SHA: ${{ github.sha }}
+        run: echo $GIT_SHA
+
