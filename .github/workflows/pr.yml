@@ -10,6 +10,6 @@ jobs:
     steps:
       - name: report sha
         env: 
-          GIT_SHA: ${{ github.sha }}
+          GIT_SHA: ${{ github.event.pull_request.head.sha }}
         run: echo $GIT_SHA
 
